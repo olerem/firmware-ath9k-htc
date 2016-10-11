@@ -42,7 +42,6 @@
 #include <vdesc_api.h>
 #include <adf_os_mem.h> 
 #include <adf_os_io.h>
-#include <rom.h>
 
 #include "hif_usb.h"
 
@@ -68,5 +67,5 @@ void _HIFusb_isr_handler_patch(hif_handle_t h)
 {
     A_USB_FW_TASK();
 
-    _HIFusb_isr_handler(h);
+    _HIFusb_isr_handler();
 }

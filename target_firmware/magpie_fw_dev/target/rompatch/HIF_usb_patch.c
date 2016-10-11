@@ -36,7 +36,6 @@
 #include "dt_defs.h"
 #include "reg_defs.h"
 
-#include <rom.h>
 #include <osapi.h>
 #include <hif_api.h>
 #include <Magpie_api.h>
@@ -68,7 +67,7 @@ void _HIFusb_isr_handler_patch(hif_handle_t h)
 {
     A_USB_FW_TASK();
 
-    _HIFusb_isr_handler(h);
+    _HIFusb_isr_handler();
 }
 
 
@@ -101,5 +100,5 @@ void _HIFusb_start_patch(hif_handle_t handle)
             break;
         }
     }
-    _HIFusb_start(handle);
+    _HIFusb_start();
 }

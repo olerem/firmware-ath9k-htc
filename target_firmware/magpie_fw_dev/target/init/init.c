@@ -34,9 +34,6 @@
  */
 #if defined(_RAM_)
 
-#include <wlan_pci.h>
-#include <rom.h>
-
 #include "athos_api.h"
 #include "usb_defs.h"
 
@@ -67,6 +64,8 @@ uint32_t idle_cnt = 0;
 // save the ROM printf function point
 int (* save_cmnos_printf)(const char * fmt, ...);
 #endif
+
+#define ATH_DATE_STRING     __DATE__" "__TIME__
 
 static void idle_task();
 

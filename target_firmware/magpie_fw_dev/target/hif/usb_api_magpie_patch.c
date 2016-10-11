@@ -32,9 +32,6 @@
  * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-#include <init/app_start.h>
-
 #include "usb_defs.h"
 #include "usb_type.h"
 #include "usb_pre.h"

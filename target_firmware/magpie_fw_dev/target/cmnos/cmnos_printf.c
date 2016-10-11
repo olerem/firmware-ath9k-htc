@@ -32,14 +32,10 @@
 // -------------------------------------------
 //####ECOSGPLCOPYRIGHTEND####
 
-
+#include "dt_defs.h"
 #include "sys_cfg.h"
 
-#include "dt_defs.h"
-
 #if SYSTEM_MODULE_PRINT
-
-#if MOVE_PRINT_TO_RAM
 
 #include "athos_api.h"
 
@@ -53,9 +49,12 @@
 #define va_copy __builtin_va_copy
 #endif
 
-#include <stdarg.h>
+#if defined(__XCC__)
+#include "stdarg.h"
+#define va_list __gnuc_va_list
+#endif
 
-LOCAL void
+void
 cmnos_write_char(char c)
 {
     if (c == '\n') {
@@ -67,11 +66,9 @@ cmnos_write_char(char c)
     }
 }
 
-LOCAL void
-(*_putc)(char c) = cmnos_write_char;
+void (*_putc)(char c) = cmnos_write_char;
 
-LOCAL int
-_cvt(unsigned long val, char *buf, long radix, char *digits)
+static int _cvt(unsigned long val, char *buf, long radix, char *digits)
 {
     char temp[80];
     char *cp = temp;
@@ -95,12 +92,11 @@ _cvt(unsigned long val, char *buf, long radix, char *digits)
 }
 
 
-LOCAL
-int cmnos_vprintf(void (*putc)(char c), const char *fmt, va_list ap)
+static int cmnos_vprintf(void (*putc)(char c), const char *fmt, va_list ap)
 {
     char buf[sizeof(long)*8];
     char c, sign, *cp=buf;
-    int left_prec, right_prec, zero_fill, pad, pad_on_right,
+    int left_prec, right_prec, zero_fill, pad, pad_on_right, 
         i, islong, islonglong;
     long val = 0;
     int res = 0, length = 0;
@@ -292,8 +288,7 @@ int cmnos_vprintf(void (*putc)(char c), const char *fmt, va_list ap)
     return (res);
 }
 
-int
-fw_cmnos_printf(const char *fmt, ...)
+int cmnos_printf(const char *fmt, ...)
 {
     va_list ap;
     int ret;
@@ -308,9 +303,20 @@ fw_cmnos_printf(const char *fmt, ...)
     }
 
     va_end(ap);
+
     return (ret);
 }
 
-#endif /* MOVE_PRINT_TO_RAM */
+void
+cmnos_printf_init(void)
+{
+}
+
+void cmnos_printf_module_install(struct printf_api *tbl)
+{
+    tbl->_printf_init = cmnos_printf_init;
+    tbl->_printf = cmnos_printf;
+}
 
 #endif /* SYSTEM_MODULE_PRINT */
+
