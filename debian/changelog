@@ -1,3 +1,9 @@
+open-ath9k-htc-firmware (1.4.0-81-gf206e56+dfsg-2) unstable; urgency=low
+
+  * Set "Auto-Built-Package: debug-symbols" for -dbgsym package.
+
+ -- Oleksij Rempel <linux@rempel-privat.de>  Sat, 29 Apr 2017 17:41:41 +0200
+
 open-ath9k-htc-firmware (1.4.0-81-gf206e56+dfsg-1) unstable; urgency=low
 
   * Initial Release. Closes: #751339, #711470
