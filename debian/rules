@@ -24,9 +24,7 @@ override_dh_auto_build-indep:
 override_dh_install-indep:
 	mv target_firmware/htc_9271.fw target_firmware/htc_9271-$(FW_FILENAME_VER).fw
 	mv target_firmware/htc_7010.fw target_firmware/htc_7010-$(FW_FILENAME_VER).fw
+	dh_install
 	install -D -m 0644 target_firmware/build/k2/fw.elf debian/.debhelper/${package}/dbgsym-root/usr/lib/debug/lib/firmware/ath9k_htc/htc_9271-$(FW_FILENAME_VER).elf
 	install -D -m 0644 target_firmware/build/magpie/fw.elf debian/.debhelper/${package}/dbgsym-root/usr/lib/debug/lib/firmware/ath9k_htc/htc_7010-$(FW_FILENAME_VER).elf
-	dh_install
-
-override_dh_strip:
 	dh_strip -p${package} --no-automatic-dbgsym
