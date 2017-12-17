@@ -11,8 +11,8 @@
     </p>
   </description>
   <provides>
-    <modalias>usb:v0cf3p9271d*</modalias>
-    <modalias>usb:v0cf3p1006d*</modalias>
+    <modalias>usb:v0CF3p9271d*</modalias>
+    <modalias>usb:v0CF3p1006d*</modalias>
     <modalias>usb:v0846p9030d*</modalias>
     <modalias>usb:v07D1p3A10d*</modalias>
     <modalias>usb:v13D3p3327d*</modalias>
@@ -23,19 +23,19 @@
     <modalias>usb:v13D3p3350d*</modalias>
     <modalias>usb:v04CAp4605d*</modalias>
     <modalias>usb:v040Dp3801d*</modalias>
-    <modalias>usb:v0cf3pb003d*</modalias>
-    <modalias>usb:v0cf3pb002d*</modalias>
-    <modalias>usb:v057cp8403d*</modalias>
-    <modalias>usb:v0471p209ed*</modalias>
-    <modalias>usb:v0cf3p7015d*</modalias>
+    <modalias>usb:v0CF3pB003d*</modalias>
+    <modalias>usb:v0CF3pB002d*</modalias>
+    <modalias>usb:v057Cp8403d*</modalias>
+    <modalias>usb:v0471p209Ed*</modalias>
+    <modalias>usb:v0CF3p7015d*</modalias>
     <modalias>usb:v1668p1200d*</modalias>
-    <modalias>usb:v0cf3p7010d*</modalias>
+    <modalias>usb:v0CF3p7010d*</modalias>
     <modalias>usb:v0846p9018d*</modalias>
     <modalias>usb:v083ApA704d*</modalias>
-    <modalias>usb:v0411p017fd*</modalias>
+    <modalias>usb:v0411p017Fd*</modalias>
     <modalias>usb:v0411p0197d*</modalias>
-    <modalias>usb:v04dap3904d*</modalias>
-    <modalias>usb:v0930p0a08d*</modalias>
-    <modalias>usb:v0cf3p20ffd*</modalias>
+    <modalias>usb:v04DAp3904d*</modalias>
+    <modalias>usb:v0930p0A08d*</modalias>
+    <modalias>usb:v0CF3p20FFd*</modalias>
   </provides>
 </component>

@@ -583,7 +583,7 @@ static void ath_tgt_send_beacon(struct ath_softc_tgt *sc, adf_nbuf_t bc_hdr,
 	struct ath_hal *ah = sc->sc_ah;
 	struct ath_tx_buf *bf;
 	a_uint8_t vap_index, *anbdata;
-	ath_beacon_hdr_t *bhdr;
+	ath_beacon_hdr_t *bhdr = NULL;
 	a_uint32_t anblen;
 
 	if (!bc_hdr) {
@@ -591,6 +591,7 @@ static void ath_tgt_send_beacon(struct ath_softc_tgt *sc, adf_nbuf_t bc_hdr,
 		bhdr = (ath_beacon_hdr_t *)anbdata;
 	} else {
 		adf_os_print("found bc_hdr! 0x%x\n", bc_hdr);
+		adf_os_assert(0);
 	}
 
 	vap_index = bhdr->vap_index;
@@ -759,6 +760,7 @@ static void tgt_HTCRecvMessageHandler(HTC_ENDPOINT_ID EndPt,
 
 	bf->bf_endpt = EndPt;
 	bf->bf_cookie = dh->cookie;
+	bf->vap_index = dh->vap_index;
 
 	if (tid->flag & TID_AGGR_ENABLED)
 		ath_tgt_handle_aggr(sc, bf);
@@ -1098,9 +1100,9 @@ static void ath_enable_intr_tgt(void *Context, A_UINT16 Command,
 {
 	struct ath_softc_tgt *sc = (struct ath_softc_tgt *)Context;
 	struct ath_hal *ah = sc->sc_ah;
-	a_uint32_t intr;
+	a_uint32_t intr = 0;
 
-	if (data)
+	if (datalen == 4)
 		intr = (*(a_uint32_t *)data);
 
 	intr = adf_os_ntohl(intr);
@@ -1613,11 +1615,14 @@ static void ath_stop_tx_dma_tgt(void *Context, A_UINT16 Command,
 	struct ath_hal *ah = sc->sc_ah;
 	a_uint32_t q;
 
-	if (data)
-		q = *(a_uint32_t *)data;
+	if (!datalen)
+		goto done;
+
+	q = *(a_uint32_t *)data;
 
 	q = adf_os_ntohl(q);
 	ah->ah_stopTxDma(ah, q);
+done:
 	wmi_cmd_rsp(sc->tgt_wmi_handle, Command, SeqNo, NULL, 0);
 }
 

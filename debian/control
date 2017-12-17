@@ -3,14 +3,14 @@ Maintainer: Oleksij Rempel <linux@rempel-privat.de>
 Uploaders:
  Paul Fertser <fercerpav@gmail.com>,
 Section: misc
-Priority: extra
+Priority: optional
 Build-Depends:
  binutils-source,
  bison,
  cmake,
  debhelper (>= 10),
  flex,
- gcc-6-source,
+ gcc-7-source,
  libmpc-dev,
 Standards-Version: 3.9.8
 Homepage: https://github.com/qca/open-ath9k-htc-firmware
