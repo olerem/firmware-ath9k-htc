@@ -17,7 +17,7 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 njobs = -j $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 endif
 
-gcc_major_version     = 6
+gcc_major_version     = 7
 
 # GCC does not build with some hardening options and anyway we do not
 # ship the resulting binaries in the package
@@ -35,16 +35,13 @@ gcc_build_dir         = $(toolchain_dir)/gcc-$(target)
 
 # Use only xtensa-specific patches on top of upstream version
 binutils_patch        = local/patches/binutils.patch
-# Only needed for binutils 2.27 and earlier
-binutils_2.27_fix_patch = local/patches/binutils-2.27_fixup.patch
 gcc_patch             = local/patches/gcc.patch
 
 $(stamp)binutils_unpack:
 	mkdir -p $(binutils_unpack_dir)
 	cd $(binutils_unpack_dir) && \
 		tar --strip-components=1 -xf $(binutils_src_dir)/binutils-*.tar.* && \
-		patch -p1 < $(CURDIR)/$(binutils_patch) && \
-		{ patch -p1 < $(CURDIR)/$(binutils_2.27_fix_patch) || true; }
+		patch -p1 < $(CURDIR)/$(binutils_patch)
 	touch $@
 
 $(stamp)binutils_%: $(stamp)binutils_unpack

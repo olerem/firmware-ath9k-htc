@@ -1,3 +1,9 @@
+open-ath9k-htc-firmware (1.4.0-81-gf206e56+dfsg-3) unstable; urgency=medium
+
+  * Use GCC 7
+
+ -- Oleksij Rempel <linux@rempel-privat.de>  Tue, 12 Dec 2017 17:10:53 +0000
+
 open-ath9k-htc-firmware (1.4.0-81-gf206e56+dfsg-2) unstable; urgency=low
 
   * Set "Auto-Built-Package: debug-symbols" for -dbgsym package.
