@@ -12,7 +12,7 @@ Build-Depends:
  flex,
  gcc-7-source,
  libmpc-dev,
-Standards-Version: 3.9.8
+Standards-Version: 4.1.2
 Homepage: https://github.com/qca/open-ath9k-htc-firmware
 Vcs-Browser: https://github.com/olerem/firmware-ath9k-htc
 Vcs-Git: https://github.com/olerem/firmware-ath9k-htc
