@@ -10,7 +10,7 @@ Build-Depends:
  cmake,
  debhelper (>= 10),
  flex,
- gcc-source,
+ gcc-8-source,
  libmpc-dev,
 Standards-Version: 4.2.1
 Homepage: https://github.com/qca/open-ath9k-htc-firmware
