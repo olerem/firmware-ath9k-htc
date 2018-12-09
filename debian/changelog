@@ -1,3 +1,10 @@
+open-ath9k-htc-firmware (1.4.0-99-g50150ae+dfsg-1) unstable; urgency=medium
+
+  * update to gcc 8.2.0
+  * New upstream version (Closes: #915737)
+
+ -- Oleksij Rempel <linux@rempel-privat.de>  Sun, 09 Dec 2018 08:49:53 +0000
+
 open-ath9k-htc-firmware (1.4.0-97-g75b3e59+dfsg-1) unstable; urgency=medium
 
   * update to latest upstream version 1.4.0-97-g75b3e59
